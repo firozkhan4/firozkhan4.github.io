@@ -1,0 +1,44 @@
+article {
+  padding: 2rem 5rem;
+  overflow-y: auto;
+  line-height: 2;
+}
+
+article h1 {
+  color: #f5c2e7;
+}
+
+article p {
+  margin: 1rem 0;
+}
+
+code{
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+code pre {
+  background-color: #24273a;
+  color: #89b4fa;
+  padding: 1rem;
+  border-radius: 5px;
+  overflow-x: auto;
+  font-size: 0.9rem;
+  line-height: 1.4;
+}
+
+pre::-webkit-scrollbar{
+    background: #45475a;
+}
+
+pre::-webkit-scrollbar-thumb{
+    background: #6c708d;
+}
+
+/* article code {
+  background-color: #45475a;
+  color: #f5c2e7;
+  padding: 0.2rem 0.4rem;
+  border-radius: 3px;
+  font-size: 0.95rem;
+} */

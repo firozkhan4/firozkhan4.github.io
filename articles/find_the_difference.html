@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>FirozKhan4</title>
+    <link rel="stylesheet" href="../style.css" />
+    <link rel="stylesheet" href="article.css" />
+  </head>
+  <body>
+    <header>
+      <div class="title"><a href="../index.html" class="">Firozkhan4</a></div>
+      <div class="nav">Press ":q" to exit</div>
+    </header>
+
+    <article>
+      <h1>
+        Efficiently Finding the Added Letter in a Shuffled String using XOR
+      </h1>
+      <p>
+        In this article, we will dive into an elegant solution to the problem of
+        finding an extra letter in a shuffled string. The solution relies on the
+        XOR bitwise operation to efficiently identify the additional character
+        that was inserted into one of the strings.
+      </p>
+
+      <h2>Problem Statement</h2>
+      <p>
+        Given two strings, `s` and `t`, where string `t` is a shuffled version
+        of string `s` with one additional random letter inserted, the goal is to
+        find the extra letter that was added to `t`. Here’s an example:
+      </p>
+      <code>
+        <pre>
+          Input: s = "abcd", t = "abcde"
+          Output: The extra letter is "e"
+        </pre>
+      </code>
+
+      <h2>Approach</h2>
+      <p>
+        One might initially think of using sorting or a hash map to find the
+        added letter. However, these approaches are less efficient in terms of
+        both time and space. Instead, we can use the XOR bitwise operation,
+        which is both fast and memory efficient. Let's walk through the solution
+        step by step.
+      </p>
+
+      <h3>XOR Properties</h3>
+      <p>
+        XOR (exclusive OR) has several important properties that make it a
+        powerful tool for this problem:
+      </p>
+      <ul>
+        <li>
+          <strong>XOR of identical values is zero:</strong> a ^ a = 0. This
+          means that when two identical characters from `s` and `t` are XORed,
+          they cancel each other out.
+        </li>
+        <li>
+          <strong>XOR is commutative and associative:</strong> a ^ b ^ c = c ^ a
+          ^ b. This means we can traverse the strings in any order and the
+          result will still be the same.
+        </li>
+        <li>
+          <strong>XOR with zero retains the value:</strong> a ^ 0 = a. This is
+          crucial for accumulating XOR results and identifying the extra
+          character.
+        </li>
+      </ul>
+
+      <h2>Step-by-Step Code Explanation</h2>
+      <p>Here’s the code implementation of the XOR approach:</p>
+      <code>
+        <pre>
+          char findTheDifference(char* s, char* t) {
+            if (!*s) return *t;  // If 's' is empty, the first character of 't' is the extra character.
+
+            int i = 0, xor = 0;
+            
+            // XOR each character from 's' and 't'
+            for (; s[i]; i++) xor ^= (s[i] ^ t[i]);
+            
+            // Return the result of XORing the remaining character in 't' (which has no pair in 's')
+            return xor ^ t[i];
+          }
+        </pre>
+      </code>
+
+      <h3>Step 1: Handle the Edge Case</h3>
+      <p>
+        If string `s` is empty, then the only character in `t` is the extra
+        letter. The code handles this edge case by returning the first character
+        of `t` immediately.
+      </p>
+
+      <h3>Step 2: XOR All Characters</h3>
+      <p>
+        The main part of the solution involves XORing corresponding characters
+        from `s` and `t`. Any characters that are identical between the two
+        strings will cancel each other out, leaving the unique character that
+        was added to `t`.
+      </p>
+
+      <h3>Step 3: Handle the Extra Character</h3>
+      <p>
+        After the loop finishes, the index `i` will point to the extra character
+        in `t`. The XOR result will have accumulated all the differences, and
+        XORing it with `t[i]` will give the added character.
+      </p>
+
+      <h2>Why This Approach?</h2>
+      <h3>1. Time Efficiency</h3>
+      <p>
+        The time complexity of this approach is O(n), where n is the length of
+        the longer string `t`. This is because we only need to traverse both
+        strings once. In contrast, sorting would take O(n log n) time, and using
+        a hash map would add additional overhead.
+      </p>
+
+      <h3>2. Space Efficiency</h3>
+      <p>
+        The space complexity is O(1), as the algorithm uses only a constant
+        amount of extra space. No additional data structures are required. A
+        hash map-based solution would require O(n) space for storing character
+        counts.
+      </p>
+
+      <h3>3. Simplicity</h3>
+      <p>
+        The XOR approach is simple to implement and understand, with minimal
+        lines of code. It avoids the need for complex data structures or
+        algorithms, making it an ideal solution for this problem.
+      </p>
+
+      <h2>Conclusion</h2>
+      <p>
+        By leveraging the properties of XOR, we can efficiently find the extra
+        letter in a shuffled string with minimal time and space complexity. This
+        approach is both elegant and optimal, making XOR a powerful tool for
+        solving a wide range of problems that involve comparing or detecting
+        differences between datasets.
+      </p>
+    </article>
+
+    <footer>
+      <div class="command">Command:</div>
+      <div class="mode">-- NORMAL --</div>
+    </footer>
+  </body>
+</html>
