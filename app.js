@@ -1,6 +1,6 @@
 const commandBar = document.getElementById("command-bar");
 
-const url = new URL("https://firozkhan4.github.io./firozkhan4")
+const url = new URL("https://firozkhan4.github.io")
 
 const navlist = new Map([
   [":home", "/"],
