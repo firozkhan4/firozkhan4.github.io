@@ -26,7 +26,7 @@ function runCommand() {
   if(cmd === ":q"){
     window.location.replace("")
   }else if (navlist.has(cmd)) {
-    window.location.replace(new URL(cmd,url));
+    window.location.replace(new URL(navlist.get(cmd),url));
   } else {
     showNotification("Invalid Command!", 10000);
   }
