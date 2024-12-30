@@ -1,9 +1,9 @@
 const commandBar = document.getElementById("command-bar");
 
-const url = "http://127.0.0.1:5500";
+const url = new URL("https://firozkhan4.github.io./firozkhan4")
 
 const navlist = new Map([
-  [":home", "/"],
+  [":home", {link: "/", internalLink: true}],
   [":dsa", "/dsa"],
   [":posts", "/posts"],
   [":x", "https://x.com/firozkhan_4"],
@@ -26,7 +26,7 @@ function runCommand() {
   if(cmd === ":q"){
     window.location.replace("")
   }else if (navlist.has(cmd)) {
-    window.location.replace(url + navlist.get(cmd));
+    window.location.replace(new URL(cmd,url));
   } else {
     showNotification("Invalid Command!", 10000);
   }
